@@ -1,0 +1,25 @@
+/**
+ * @file config.h
+ * @author ZotBins
+ *
+ * @brief Header file containing all the device specific information
+ */
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// WiFi Credentials
+#define WIFI_SSID  ""
+#define WIFI_PASS ""
+
+// MQTT Credentials
+#define MQTT_URI ""
+#define FULLNESS_TOPIC ""
+#define PHOTO_TOPIC ""
+
+// Bin Parameters
+#define BIN_HEIGHT 0.0f // Height of the bin (in cm)
+#define MAX_US_RANGE 500.0f // Maximum allowed range of US sensor
+
+#endif /* CONFIG_H */
+
+/*** end of file ***/
