@@ -16,9 +16,6 @@
 #define US_ECHO_PIN 12
 #define US_TRIGGER_PIN 13
 
-// Maximum distance measured
-#define MAX_FULLNESS 500.0f
-
 bool fullness_init(void);
 bool fullness_measure(float *p_distance);
 
