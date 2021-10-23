@@ -6,8 +6,12 @@
  *
  */
 
-#include "fullness.h"
 #include <ultrasonic.h>
+#include "fullness.h"
+
+// GPIO Pins for Ultrasonic Sensor
+#define US_ECHO_PIN 12
+#define US_TRIGGER_PIN 13
 
 static const ultrasonic_sensor_t g_ultrasonic = {US_TRIGGER_PIN, US_ECHO_PIN};
 
@@ -16,7 +20,8 @@ static const ultrasonic_sensor_t g_ultrasonic = {US_TRIGGER_PIN, US_ECHO_PIN};
  *
  * @return True/False depending on the success of sensor initialization
  */
-bool fullness_init(void)
+bool
+fullness_init (void)
 {
     // TODO: REMOVE THIS, ADDED TO REMOVE COMPLIER WARNING
     (void) g_ultrasonic;
@@ -34,7 +39,8 @@ bool fullness_init(void)
  * @return False if fullness sensor was unsuccessful (p_distance is invalid)
  *
  */
-bool fullness_measure(float *p_distance)
+bool
+fullness_measure (float *p_distance)
 {
     *p_distance = 0;
     return false;
