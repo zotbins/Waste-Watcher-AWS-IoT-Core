@@ -48,6 +48,6 @@ git clone --recursive https://github.com/zotbins/waste_watcher_mqtt.git
 
 5. **IMPORTANT:** Enter programming mode on the ESP32-CAM by attaching a jumper cap on the pins ```IO0``` and ```GND``` and pressing on the reset push button on the back.
 
-6. Upload the application by clicking on the ```Upload``` Button in the PlatformiIO tab.
+6. Upload the application by clicking on the ```Upload``` Button in the PlatformIO tab.
 
-7. Remove the jumper cap from ```IO0``` and ```GND`` and press on the reset push program to start the application.
+7. Remove the jumper cap from ```IO0``` and ```GND``` and press on the reset push program to start the application.
