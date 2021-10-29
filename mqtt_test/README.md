@@ -21,7 +21,7 @@ On Mac/Linux, use this command
 ```bash
 source venv/bin/activate
 ```
-(If you use the csh or fish shells, there are alternate activate.csh and activate.fish scripts you should use instead.)
+(If you use the csh or fish shells, there are alternate ```activate.csh``` and ```activate.fish``` scripts you should use instead.)
 
 3. Install the dependencies using the command
 ```bash
