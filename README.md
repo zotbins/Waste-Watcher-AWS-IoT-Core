@@ -37,7 +37,7 @@ Attach a jumper cap on the pins on the ESP32-CAM
 
 1. First, clone the repo and its dependencies using the command
 ```bash
-git clone --recursive https://github.com/zotbins/waste_watcher_mqtt.git
+git clone --recursive https://github.com/zotbins/Waste-Watcher-AWS-IoT-Core.git
 ```
 
 2. In the ```include``` directory, create a header file called ```config.h```.
