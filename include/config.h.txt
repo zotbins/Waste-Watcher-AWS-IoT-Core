@@ -18,7 +18,7 @@
 
 // Bin Parameters
 #define BIN_HEIGHT 0.0f // Height of the bin (in cm)
-#define MAX_US_RANGE 500.0f // Maximum allowed range of US sensor
+#define MAX_US_RANGE 5000U // Maximum allowed range of US sensor
 
 #endif /* CONFIG_H */
 
