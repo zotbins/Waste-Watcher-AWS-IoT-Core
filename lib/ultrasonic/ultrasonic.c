@@ -71,8 +71,26 @@ esp_err_t ultrasonic_init(const ultrasonic_sensor_t *dev)
 {
     CHECK_ARG(dev);
 
-    CHECK(gpio_set_direction(dev->trigger_pin, GPIO_MODE_OUTPUT));
-    CHECK(gpio_set_direction(dev->echo_pin, GPIO_MODE_INPUT));
+    gpio_config_t trigger_config =
+    {
+        .intr_type = GPIO_PIN_INTR_DISABLE,
+        .mode = GPIO_MODE_OUTPUT,
+        .pin_bit_mask = (1ULL << dev->trigger_pin),
+        .pull_down_en = 0,
+        .pull_up_en = 0
+    };
+
+    gpio_config_t echo_config =
+    {
+        .intr_type = GPIO_PIN_INTR_DISABLE,
+        .mode = GPIO_MODE_INPUT,
+        .pin_bit_mask = (1ULL << dev->echo_pin),
+        .pull_down_en = GPIO_PULLDOWN_ENABLE,
+        .pull_up_en = GPIO_PULLUP_DISABLE
+    };
+
+    CHECK(gpio_config(&trigger_config));
+    CHECK(gpio_config(&echo_config));
 
     return gpio_set_level(dev->trigger_pin, 0);
 }

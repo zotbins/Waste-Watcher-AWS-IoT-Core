@@ -12,7 +12,7 @@
 #include <stdbool.h>
 
 bool fullness_init(void);
-bool fullness_measure(float *p_distance);
+bool fullness_measure(uint32_t *p_distance);
 
 #endif /* FULLNESS_H */
 
