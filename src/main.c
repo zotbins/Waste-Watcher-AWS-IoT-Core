@@ -14,7 +14,7 @@
 void app_main()
 {
     // initialize fullness sensor for use
-    float fullness;
+    uint32_t fullness;
     if (!fullness_init()) 
     {
         ESP_LOGE("WasteWatcher","Failed to init fullness sensor");
@@ -23,7 +23,7 @@ void app_main()
     while (1)
     {
         fullness_measure(&fullness);
-        ESP_LOGI("WasteWatcher", "Measured Distance: %f\n", fullness);
+        ESP_LOGI("WasteWatcher", "Measured Distance: %d", fullness);
         vTaskDelay(1000 / portTICK_PERIOD_MS); // delays by 1 second
     }
 }

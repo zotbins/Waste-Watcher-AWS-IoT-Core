@@ -30,12 +30,12 @@ bool
 fullness_init (void)
 {
     
-    gpio_set_direction(13, GPIO_MODE_OUTPUT);
-    gpio_set_level(13, 1);
+    // gpio_set_direction(13, GPIO_MODE_OUTPUT);
+    // gpio_set_level(13, 1);
 
-    return true;
+    // return true;
     
-    //return ultrasonic_init(&g_ultrasonic) == ESP_OK;
+    return ultrasonic_init(&g_ultrasonic) == ESP_OK;
 }
 
 /**
@@ -52,24 +52,24 @@ fullness_init (void)
 bool
 fullness_measure (uint32_t *p_distance)
 {
-    esp_err_t res = ultrasonic_measure(&g_ultrasonic, MAX_US_RANGE, p_distance); //measures distance
+    esp_err_t res = ultrasonic_measure_cm(&g_ultrasonic, MAX_US_RANGE, p_distance); //measures distance
 
     switch (res)
     {
         case ESP_ERR_ULTRASONIC_PING:
-            ESP_LOGE("Fullness", "Cannot ping (device is in invalid state)\n");
+            ESP_LOGE("Fullness", "Cannot ping (device is in invalid state)");
             break;
         case ESP_ERR_ULTRASONIC_PING_TIMEOUT:
-            ESP_LOGE("Fullness", "Ping timeout (no device found)\n");
+            ESP_LOGE("Fullness", "Ping timeout (no device found)");
             break;
         case ESP_ERR_ULTRASONIC_ECHO_TIMEOUT:
-            ESP_LOGE("Fullness", "Echo timeout (i.e. distance too big)\n");
+            ESP_LOGE("Fullness", "Echo timeout (i.e. distance too big)");
             break;
         case ESP_OK:
-            ESP_LOGI("Fullness", "Measured Distance: %f\n", *p_distance);
+            ESP_LOGI("Fullness", "Measured Distance: %d", *p_distance);
             break;
         default:
-            ESP_LOGE("Fullness", "%s\n", esp_err_to_name(res));
+            ESP_LOGE("Fullness", "%s", esp_err_to_name(res));
     }
     
     return res == ESP_OK;
