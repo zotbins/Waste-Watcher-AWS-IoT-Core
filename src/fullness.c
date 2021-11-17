@@ -44,13 +44,13 @@ fullness_init (void)
  * Returns True/False if sensor successfully measures distance.
  * If False, the value of p_distance is invalid and should not be used.
  *
- * @param p_distance Pointer to float that contains the distance (in cm)
+ * @param p_distance Pointer to uint32_t that contains the distance (in cm)
  * @return True if fullness sensor successfully measured distance (p_distance is valid)
  * @return False if fullness sensor was unsuccessful (p_distance is invalid)
  *
  */
 bool
-fullness_measure (float *p_distance)
+fullness_measure (uint32_t *p_distance)
 {
     esp_err_t res = ultrasonic_measure(&g_ultrasonic, MAX_US_RANGE, p_distance); //measures distance
 
