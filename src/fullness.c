@@ -30,11 +30,6 @@ bool
 fullness_init (void)
 {
     
-    // gpio_set_direction(13, GPIO_MODE_OUTPUT);
-    // gpio_set_level(13, 1);
-
-    // return true;
-    
     return ultrasonic_init(&g_ultrasonic) == ESP_OK;
 }
 
