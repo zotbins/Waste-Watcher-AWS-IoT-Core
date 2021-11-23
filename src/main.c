@@ -17,7 +17,7 @@ void app_main()
     uint32_t fullness = 0;
     bool b_on = true;
 
-    // Initialize sensors & periphericals
+    // Initialize sensors & peripherals
     ESP_ERROR_CHECK(fullness_init());
     ESP_ERROR_CHECK(flash_init());
 
