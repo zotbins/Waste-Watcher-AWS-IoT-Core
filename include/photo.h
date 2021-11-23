@@ -8,16 +8,16 @@
 #ifndef PHOTO_H
 #define PHOTO_H
 
-#include <stdbool.h>
+#include <esp_err.h>
 
 // GPIO pin for camera flash LED
 #define FLASH_PIN 4
 
-bool flash_init(void);
-bool flash_toggle(bool b_on);
+esp_err_t flash_init(void);
+esp_err_t flash_toggle(bool b_on);
 
-bool camera_init(void);
-bool camera_capture(void);
+esp_err_t camera_init(void);
+esp_err_t camera_capture(void);
 
 #endif /* PHOTO_H */
 
