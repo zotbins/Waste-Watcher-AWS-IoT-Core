@@ -9,10 +9,10 @@
 #ifndef FULLNESS_H
 #define FULLNESS_H
 
-#include <stdbool.h>
+#include <esp_err.h>
 
-bool fullness_init(void);
-bool fullness_measure(uint32_t *p_distance);
+esp_err_t fullness_init(void);
+esp_err_t fullness_measure(uint32_t *p_distance);
 
 #endif /* FULLNESS_H */
 

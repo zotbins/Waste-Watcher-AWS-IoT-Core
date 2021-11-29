@@ -15,36 +15,36 @@
 #define US_ECHO_PIN 12
 #define US_TRIGGER_PIN 13
 
-static const ultrasonic_sensor_t g_ultrasonic = 
+static const ultrasonic_sensor_t g_ultrasonic =
 {
-    .trigger_pin = US_TRIGGER_PIN, 
+    .trigger_pin = US_TRIGGER_PIN,
     .echo_pin = US_ECHO_PIN
 };
 
 /**
  * @brief Initializes fullness sensor with predefined pins
  *
- * @return True/False depending on the success of sensor initialization
+ * @return ESP_OK on success
  */
-bool
+esp_err_t
 fullness_init (void)
 {
-    
-    return ultrasonic_init(&g_ultrasonic) == ESP_OK;
+    return ultrasonic_init(&g_ultrasonic);
 }
 
 /**
  * @brief Measures the fullness of the waste bin (in cm).
  *
- * Returns True/False if sensor successfully measures distance.
- * If False, the value of p_distance is invalid and should not be used.
+ * Returns ESP_OK if the ultrasonic sensor successfully measured the distance
+ *
  *
  * @param p_distance Pointer to uint32_t that contains the distance (in cm)
- * @return True if fullness sensor successfully measured distance (p_distance is valid)
- * @return False if fullness sensor was unsuccessful (p_distance is invalid)
- *
+ * @return ESP_OK if ultrasonic sensor successfully measures distance, otherwise:
+ *         ESP_ERR_ULTRASONIC_PING - ultrasonic sensor cannot ping
+ *         ESP_ERR_ULTRASONIC_PING_TIMEOUT - Device is not responding
+ *         ESP_ERR_ULTRASONIC_ECHO_TIMEOUT - Distance is too big or wave is scattered
  */
-bool
+esp_err_t
 fullness_measure (uint32_t *p_distance)
 {
     esp_err_t res = ultrasonic_measure_cm(&g_ultrasonic, MAX_US_RANGE, p_distance); //measures distance
@@ -61,13 +61,12 @@ fullness_measure (uint32_t *p_distance)
             ESP_LOGE("Fullness", "Echo timeout (i.e. distance too big)");
             break;
         case ESP_OK:
-            ESP_LOGI("Fullness", "Measured Distance: %d", *p_distance);
             break;
         default:
             ESP_LOGE("Fullness", "%s", esp_err_to_name(res));
     }
-    
-    return res == ESP_OK;
+
+    return res;
 }
 
 /*** end of file ***/

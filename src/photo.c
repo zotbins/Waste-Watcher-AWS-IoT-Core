@@ -13,9 +13,9 @@
 /**
  * @brief Initalize flash LED
  *
- * @return True/False if flash is successfully initialized
+ * @return ESP_OK on success
  */
-bool
+esp_err_t
 flash_init (void)
 {
     gpio_config_t flash_config =
@@ -27,27 +27,27 @@ flash_init (void)
         .pull_up_en = 0
     };
 
-    return gpio_config(&flash_config) == ESP_OK;
+    return gpio_config(&flash_config);
 }
 
 /**
  * @brief Toggles the camera flash
  *
  * @param b_on True/False if the flash should be on/off
- * @return True/False depending if the flash successfully changed state
+ * @return ESP_OK if the state of the flash LED successfully updated
  */
-bool
+esp_err_t
 flash_toggle (bool b_on)
 {
-    return gpio_set_level(FLASH_PIN, b_on) == ESP_OK;
+    return gpio_set_level(FLASH_PIN, b_on);
 }
 
 /**
  * @brief Initalizes the ESP32 Camera
  *
- * @return True/False if succesfully initalizes the camera without errors
+ * @return ESP_OK if succesfully initalizes the camera without errors
  */
-bool
+esp_err_t
 camera_init (void)
 {
     return false;
@@ -56,9 +56,9 @@ camera_init (void)
 /**
  * @brief Capture image
  *
- * @return True/False if the camera succesfully captured an image
+ * @return ESP_OK if the camera succesfully captured an image
  */
-bool
+esp_err_t
 camera_capture (void)
 {
     return false;

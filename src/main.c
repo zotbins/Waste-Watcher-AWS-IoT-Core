@@ -14,29 +14,18 @@
 
 void app_main()
 {
-    uint32_t fullness;
+    uint32_t fullness = 0;
     bool b_on = true;
 
-    if (!flash_init()) 
-    {
-        ESP_LOGE("WasteWatcher", "Failed to init flash LED");
-        while (1) 
-        {
-        }
-    }
-    
-    if (!fullness_init())
-    {
-        ESP_LOGE("WasteWatcher", "Failed to init fullness sensor");
-        while (1) 
-        {
-        }
-    }
+    // Initialize sensors & peripherals
+    ESP_ERROR_CHECK(fullness_init());
+    ESP_ERROR_CHECK(flash_init());
 
     while (1)
     {
         fullness_measure(&fullness);
         ESP_LOGI("WasteWatcher", "Measured Distance: %d", fullness);
+
         flash_toggle(b_on);
         b_on = !b_on;
 
